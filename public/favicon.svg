@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+    <defs>
+        <linearGradient id="blog-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0F172A" />
+            <stop offset="55%" stop-color="#4338CA" />
+            <stop offset="100%" stop-color="#7C3AED" />
+        </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="18" fill="url(#blog-grad)" />
+    <path d="M22 17h13a8 8 0 0 1 4.6 14.5A8.5 8.5 0 0 1 36 48H22V17Zm7 6.5v6h5a3 3 0 0 0 0-6h-5Zm0 12v6.5h6a3.2 3.2 0 0 0 0-6.5h-6Z" fill="#FFFFFF" fill-rule="evenodd" />
+</svg>
