@@ -55,7 +55,7 @@ export default function PublicLayout({ children }) {
                                 BlogVerse <span className="text-indigo-600">Pro</span>
                             </span>
                         </Link>
-                        <nav className="hidden md:flex items-center gap-1">
+                        <nav aria-label="Navigasi utama" className="hidden md:flex items-center gap-1">
                             {navLink('/', 'Beranda', path === '/')}
                             {navLink('/articles', 'Artikel', path.startsWith('/articles'))}
                         </nav>
@@ -74,7 +74,7 @@ export default function PublicLayout({ children }) {
                                 <button
                                     type="button"
                                     onClick={() => router.post('/logout')}
-                                    className="px-3 py-2 rounded-xl text-sm font-semibold text-rose-600 hover:bg-rose-50 transition"
+                                    className="px-3 py-2 rounded-xl text-sm font-semibold text-rose-700 hover:bg-rose-50 transition"
                                 >
                                     Keluar
                                 </button>
@@ -116,7 +116,7 @@ export default function PublicLayout({ children }) {
                 </div>
 
                 {menuOpen && (
-                    <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1">
+                    <nav aria-label="Navigasi seluler" className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1">
                         {navLink('/', 'Beranda', path === '/')}
                         {navLink('/articles', 'Artikel', path.startsWith('/articles'))}
                         <div className="pt-2 flex flex-col gap-2">
@@ -125,7 +125,7 @@ export default function PublicLayout({ children }) {
                                     <Link href={dashboardHref} className="px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold text-center">
                                         {dashboardLabel}
                                     </Link>
-                                    <button type="button" onClick={() => router.post('/logout')} className="px-4 py-2 rounded-xl text-rose-600 text-sm font-semibold hover:bg-rose-50">
+                                    <button type="button" onClick={() => router.post('/logout')} className="px-4 py-2 rounded-xl text-rose-700 text-sm font-semibold hover:bg-rose-50">
                                         Keluar
                                     </button>
                                 </>
@@ -140,7 +140,7 @@ export default function PublicLayout({ children }) {
                                 </>
                             )}
                         </div>
-                    </div>
+                    </nav>
                 )}
             </header>
 
@@ -157,14 +157,14 @@ export default function PublicLayout({ children }) {
                             Platform publikasi artikel multi-tier untuk para penulis dan pembaca yang haus akan gagasan.
                         </p>
                     </div>
-                    <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
+                    <nav aria-label="Navigasi footer" className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
                         <Link href="/" className="hover:text-white transition">Beranda Publik</Link>
                         <Link href="/articles" className="hover:text-white transition">Semua Artikel</Link>
                         <Link href="/login" className="hover:text-white transition">Halaman Login</Link>
                         <Link href="/register" className="hover:text-white transition">Halaman Register</Link>
                     </nav>
                 </div>
-                <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+                <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-400">
                     &copy; {new Date().getFullYear()} BlogVerse Pro &middot; Dibangun dengan Laravel 13, Inertia.js &amp; React
                 </div>
             </footer>

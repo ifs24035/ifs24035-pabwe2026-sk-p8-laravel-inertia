@@ -25,7 +25,7 @@ export default function AdminPostTable({ posts, categories = [], showAuthor = tr
                         <tbody className="divide-y divide-slate-100">
                             {posts.data.length === 0 && (
                                 <tr>
-                                    <td colSpan={showAuthor ? 6 : 5} className="px-6 py-10 text-center text-slate-400">
+                                    <td colSpan={showAuthor ? 6 : 5} className="px-6 py-10 text-center text-slate-600">
                                         Tidak ada artikel ditemukan.
                                     </td>
                                 </tr>
@@ -34,7 +34,7 @@ export default function AdminPostTable({ posts, categories = [], showAuthor = tr
                                 <tr key={post.id} className="hover:bg-slate-50/60 transition">
                                     <td className="px-6 py-4 max-w-xs">
                                         <p className="font-bold text-slate-900 truncate">{post.title}</p>
-                                        <p className="text-slate-400 truncate">/articles/{post.slug}</p>
+                                        <p className="text-slate-600 truncate">/articles/{post.slug}</p>
                                     </td>
                                     {showAuthor && (
                                         <td className="px-6 py-4">
@@ -42,7 +42,7 @@ export default function AdminPostTable({ posts, categories = [], showAuthor = tr
                                                 <Avatar name={post.user?.name} path={post.user?.profile_photo_path} className="w-7 h-7 text-[11px]" />
                                                 <div>
                                                     <p className="font-semibold text-slate-800">{post.user?.name}</p>
-                                                    <p className="text-slate-400">@{post.user?.username}</p>
+                                                    <p className="text-slate-600">@{post.user?.username}</p>
                                                 </div>
                                             </div>
                                         </td>

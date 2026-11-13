@@ -5,7 +5,7 @@ export default function Pagination({ links = [], activeClass = 'bg-indigo-600 te
     if (!links || links.length <= 3) return null;
 
     return (
-        <div className="flex flex-wrap items-center justify-center gap-1 pt-4">
+        <nav aria-label="Navigasi halaman" className="flex flex-wrap items-center justify-center gap-1 pt-4">
             {links.map((link, idx) =>
                 link.url ? (
                     <Link
@@ -21,10 +21,11 @@ export default function Pagination({ links = [], activeClass = 'bg-indigo-600 te
                     <span
                         key={idx}
                         dangerouslySetInnerHTML={{ __html: link.label }}
-                        className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-slate-50 text-slate-300 border-slate-200 cursor-not-allowed"
+                        className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-slate-50 text-slate-600 border-slate-200 cursor-not-allowed"
+                        aria-disabled="true"
                     />
                 )
             )}
-        </div>
+        </nav>
     );
 }

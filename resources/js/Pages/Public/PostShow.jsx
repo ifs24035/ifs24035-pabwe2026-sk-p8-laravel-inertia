@@ -48,7 +48,7 @@ export default function PublicPostShow({ post, related = [], categories = [] }) 
                     </div>
 
                     <div className="mt-8">
-                        <Suspense fallback={<p className="text-sm text-slate-400 min-h-40">Memuat artikel...</p>}>
+                        <Suspense fallback={<p className="text-sm text-slate-600 min-h-40">Memuat artikel...</p>}>
                             <MarkdownViewer content={post.content} />
                         </Suspense>
                     </div>
@@ -76,7 +76,7 @@ export default function PublicPostShow({ post, related = [], categories = [] }) 
                                     <Link href="/login" className="px-6 py-2.5 rounded-xl bg-white text-indigo-800 font-bold text-sm hover:bg-indigo-50 transition">
                                         Masuk
                                     </Link>
-                                    <Link href="/register" className="px-6 py-2.5 rounded-xl bg-violet-500 hover:bg-violet-400 text-white font-bold text-sm transition">
+                                    <Link href="/register" className="px-6 py-2.5 rounded-xl bg-violet-700 hover:bg-violet-600 text-white font-bold text-sm transition">
                                         Daftar Penulis
                                     </Link>
                                 </div>

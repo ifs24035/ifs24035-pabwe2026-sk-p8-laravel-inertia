@@ -117,7 +117,7 @@ export default function ProfileEdit({ user }) {
                                         type="button"
                                         onClick={uploadPhoto}
                                         disabled={isUploadingPhoto}
-                                        className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl shadow-xs transition disabled:opacity-50 flex items-center justify-center space-x-1.5"
+                                        className="w-full py-2 px-4 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow-xs transition disabled:opacity-50 flex items-center justify-center space-x-1.5"
                                     >
                                         {isUploadingPhoto ? (
                                             <>
@@ -161,7 +161,7 @@ export default function ProfileEdit({ user }) {
                                         <button
                                             type="button"
                                             onClick={() => setConfirmingPhotoDelete(true)}
-                                            className="w-full py-2 px-4 bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-semibold rounded-xl border border-rose-200 transition"
+                                            className="w-full py-2 px-4 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-semibold rounded-xl border border-rose-200 transition"
                                         >
                                             Hapus Foto Profil
                                         </button>
@@ -170,7 +170,7 @@ export default function ProfileEdit({ user }) {
                             )}
                         </div>
 
-                        <p className="text-[11px] text-slate-400 mt-4 leading-relaxed">
+                        <p className="text-[11px] text-slate-600 mt-4 leading-relaxed">
                             Mendukung JPG, PNG, GIF hingga 5MB. Foto diproses otomatis menjadi rasio 1:1.
                         </p>
                     </div>
@@ -184,39 +184,39 @@ export default function ProfileEdit({ user }) {
 
                             <form onSubmit={submitInfo} className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Nama Lengkap</label>
-                                    <input
+                                    <label htmlFor="profile-1" className="block text-xs font-semibold text-slate-700">Nama Lengkap</label>
+                                    <input id="profile-1"
                                         type="text"
                                         value={infoForm.data.name}
                                         onChange={(e) => infoForm.setData('name', e.target.value)}
                                         required
                                         className="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     />
-                                    {infoForm.errors.name && <p className="mt-1 text-xs text-rose-600">{infoForm.errors.name}</p>}
+                                    {infoForm.errors.name && <p className="mt-1 text-xs text-rose-700">{infoForm.errors.name}</p>}
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Username</label>
-                                    <input
+                                    <label htmlFor="profile-2" className="block text-xs font-semibold text-slate-700">Username</label>
+                                    <input id="profile-2"
                                         type="text"
                                         value={infoForm.data.username}
                                         onChange={(e) => infoForm.setData('username', e.target.value)}
                                         required
                                         className="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     />
-                                    {infoForm.errors.username && <p className="mt-1 text-xs text-rose-600">{infoForm.errors.username}</p>}
+                                    {infoForm.errors.username && <p className="mt-1 text-xs text-rose-700">{infoForm.errors.username}</p>}
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Email</label>
-                                    <input
+                                    <label htmlFor="profile-3" className="block text-xs font-semibold text-slate-700">Email</label>
+                                    <input id="profile-3"
                                         type="email"
                                         value={infoForm.data.email}
                                         onChange={(e) => infoForm.setData('email', e.target.value)}
                                         required
                                         className="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     />
-                                    {infoForm.errors.email && <p className="mt-1 text-xs text-rose-600">{infoForm.errors.email}</p>}
+                                    {infoForm.errors.email && <p className="mt-1 text-xs text-rose-700">{infoForm.errors.email}</p>}
                                 </div>
 
                                 <div className="pt-2 flex justify-end">
@@ -248,8 +248,8 @@ export default function ProfileEdit({ user }) {
 
                             <form onSubmit={submitPassword} className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Password Saat Ini</label>
-                                    <input
+                                    <label htmlFor="profile-4" className="block text-xs font-semibold text-slate-700">Password Saat Ini</label>
+                                    <input id="profile-4"
                                         type="password"
                                         value={passwordForm.data.current_password}
                                         onChange={(e) => passwordForm.setData('current_password', e.target.value)}
@@ -257,13 +257,13 @@ export default function ProfileEdit({ user }) {
                                         className="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     />
                                     {passwordForm.errors.current_password && (
-                                        <p className="mt-1 text-xs text-rose-600">{passwordForm.errors.current_password}</p>
+                                        <p className="mt-1 text-xs text-rose-700">{passwordForm.errors.current_password}</p>
                                     )}
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Password Baru</label>
-                                    <input
+                                    <label htmlFor="profile-5" className="block text-xs font-semibold text-slate-700">Password Baru</label>
+                                    <input id="profile-5"
                                         type="password"
                                         value={passwordForm.data.password}
                                         onChange={(e) => passwordForm.setData('password', e.target.value)}
@@ -271,13 +271,13 @@ export default function ProfileEdit({ user }) {
                                         className="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     />
                                     {passwordForm.errors.password && (
-                                        <p className="mt-1 text-xs text-rose-600">{passwordForm.errors.password}</p>
+                                        <p className="mt-1 text-xs text-rose-700">{passwordForm.errors.password}</p>
                                     )}
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700">Konfirmasi Password Baru</label>
-                                    <input
+                                    <label htmlFor="profile-6" className="block text-xs font-semibold text-slate-700">Konfirmasi Password Baru</label>
+                                    <input id="profile-6"
                                         type="password"
                                         value={passwordForm.data.password_confirmation}
                                         onChange={(e) => passwordForm.setData('password_confirmation', e.target.value)}

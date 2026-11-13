@@ -33,7 +33,7 @@ export default function AppLayout({ children }) {
             <ProcessingIndicator />
 
             {/* Mobile Header */}
-            <div className="md:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+            <header className="md:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-30">
                 <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 rounded-lg bg-linear-to-br from-slate-900 via-indigo-700 to-violet-600 flex items-center justify-center text-white font-black text-sm">B</div>
                     <span className="font-bold text-slate-800 text-lg">BlogVerse Pro</span>
@@ -51,10 +51,11 @@ export default function AppLayout({ children }) {
                         )}
                     </svg>
                 </button>
-            </div>
+            </header>
 
             {/* Sidebar Navigation */}
             <aside
+                aria-label="Sidebar"
                 className={`fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out md:sticky md:top-0 md:h-screen md:translate-x-0 ${
                     mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
@@ -86,7 +87,7 @@ export default function AppLayout({ children }) {
                     </div>
                 )}
 
-                <nav className="flex-1 px-4 space-y-1.5 overflow-y-auto">
+                <nav aria-label="Navigasi dashboard" className="flex-1 px-4 space-y-1.5 overflow-y-auto">
                     <Link href="/dashboard/posts" className={linkClass(path.startsWith('/dashboard'))}>
                         <Icon d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                         <span>Artikel Saya</span>
@@ -104,7 +105,7 @@ export default function AppLayout({ children }) {
 
                     {user?.role === 'admin' && (
                         <div className="pt-4 mt-4 border-t border-slate-100 space-y-1.5">
-                            <span className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">Admin Area</span>
+                            <span className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-600 block mb-2">Admin Area</span>
                             <Link href="/admin/users" className={linkClass(path.startsWith('/admin/users'), 'purple')}>
                                 <Icon d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                 <span>Manajemen User</span>
@@ -120,7 +121,7 @@ export default function AppLayout({ children }) {
                 <div className="p-4 border-t border-slate-100">
                     <button
                         onClick={() => router.post('/logout')}
-                        className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-rose-600 hover:bg-rose-50 transition"
+                        className="w-full flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-rose-700 hover:bg-rose-50 transition"
                     >
                         <Icon d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         <span>Keluar (Logout)</span>

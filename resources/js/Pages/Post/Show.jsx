@@ -115,7 +115,7 @@ export default function PostShow({ post, categories = [] }) {
                         </button>
                         <button
                             onClick={() => setConfirmingDelete(true)}
-                            className="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 text-xs font-semibold rounded-xl transition"
+                            className="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-semibold rounded-xl transition"
                         >
                             Hapus
                         </button>
@@ -149,7 +149,7 @@ export default function PostShow({ post, categories = [] }) {
                     ) : (
                         <div className="p-6 bg-slate-50 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div className="flex items-center space-x-3 text-slate-500 text-xs">
-                                <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                                 <span>Belum ada foto cover. Unggah gambar sampul agar artikel tampil menarik di galeri publik.</span>
@@ -179,16 +179,16 @@ export default function PostShow({ post, categories = [] }) {
                             </div>
 
                             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">{post.title}</h1>
-                            <p className="text-xs text-slate-400 mt-1">
+                            <p className="text-xs text-slate-600 mt-1">
                                 Dibuat {post.created_at || '-'} &middot; Diperbarui {post.updated_at || '-'} &middot; /articles/{post.slug}
                             </p>
                             {post.excerpt && <p className="mt-3 text-sm text-slate-600 italic">{post.excerpt}</p>}
                         </div>
 
                         <div className="pt-6 border-t border-slate-100">
-                            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Isi Artikel (Markdown)</h2>
+                            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3">Isi Artikel (Markdown)</h2>
                             <div className="p-5 bg-white rounded-2xl border border-slate-200">
-                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat...</div>}>
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-600">Memuat...</div>}>
                                     <MarkdownViewer content={post.content} />
                                 </Suspense>
                             </div>
@@ -205,7 +205,7 @@ export default function PostShow({ post, categories = [] }) {
                             <span className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-black text-sm">✎</span>
                             <div>
                                 <h3 className="text-base font-bold leading-tight">Ubah Artikel</h3>
-                                <p className="text-xs text-white/80">Perbarui judul, kategori, ringkasan, status, dan isi artikel</p>
+                                <p className="text-xs text-white">Perbarui judul, kategori, ringkasan, status, dan isi artikel</p>
                             </div>
                         </div>
                         <button onClick={() => setShowEditModal(false)} className="text-white/80 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition" aria-label="Tutup">
@@ -216,21 +216,21 @@ export default function PostShow({ post, categories = [] }) {
                     <form onSubmit={submitEdit} className="flex-1 flex flex-col justify-between overflow-hidden">
                         <div className="flex-1 p-6 md:p-8 space-y-5 overflow-y-auto w-full">
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
-                                <input
+                                <label htmlFor="post-edit-1" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
+                                <input id="post-edit-1"
                                     type="text"
                                     value={editForm.data.title}
                                     onChange={(e) => editForm.setData('title', e.target.value)}
                                     required
                                     className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                 />
-                                {editForm.errors.title && <p className="mt-1 text-xs text-rose-600">{editForm.errors.title}</p>}
+                                {editForm.errors.title && <p className="mt-1 text-xs text-rose-700">{editForm.errors.title}</p>}
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
-                                    <select
+                                    <label htmlFor="post-edit-2" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
+                                    <select id="post-edit-2"
                                         value={editForm.data.category}
                                         onChange={(e) => editForm.setData('category', e.target.value)}
                                         className="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
@@ -254,21 +254,21 @@ export default function PostShow({ post, categories = [] }) {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Ringkasan</label>
-                                <textarea
+                                <label htmlFor="post-edit-3" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Ringkasan</label>
+                                <textarea id="post-edit-3"
                                     rows={2}
                                     value={editForm.data.excerpt}
                                     onChange={(e) => editForm.setData('excerpt', e.target.value)}
                                     className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                 />
-                                {editForm.errors.excerpt && <p className="mt-1 text-xs text-rose-600">{editForm.errors.excerpt}</p>}
+                                {editForm.errors.excerpt && <p className="mt-1 text-xs text-rose-700">{editForm.errors.excerpt}</p>}
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                                     Isi Artikel * (Toast UI Markdown Editor)
                                 </label>
-                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat editor...</div>}>
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-600">Memuat editor...</div>}>
                                     <MarkdownEditor
                                         key={`detail-edit-${post.id}`}
                                         value={editForm.data.content}
@@ -277,7 +277,7 @@ export default function PostShow({ post, categories = [] }) {
                                         placeholder="Tuliskan artikel Anda dalam format Markdown..."
                                     />
                                 </Suspense>
-                                {editForm.errors.content && <p className="mt-1 text-xs text-rose-600">{editForm.errors.content}</p>}
+                                {editForm.errors.content && <p className="mt-1 text-xs text-rose-700">{editForm.errors.content}</p>}
                             </div>
                         </div>
 

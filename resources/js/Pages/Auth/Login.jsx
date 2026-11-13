@@ -15,14 +15,14 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-linear-to-br from-slate-100 to-indigo-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <main className="min-h-screen bg-linear-to-br from-slate-100 to-indigo-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <Head title="Masuk" />
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
                 <Link href="/" className="inline-flex w-12 h-12 rounded-2xl bg-linear-to-br from-slate-900 via-indigo-700 to-violet-600 items-center justify-center text-white font-black text-2xl shadow-md">
                     B
                 </Link>
-                <h2 className="mt-4 text-3xl font-extrabold text-slate-900 tracking-tight">BlogVerse Pro</h2>
+                <h1 className="mt-4 text-3xl font-extrabold text-slate-900 tracking-tight">BlogVerse Pro</h1>
                 <p className="mt-2 text-sm text-slate-600">Masuk ke akun Anda untuk menulis dan mengelola artikel</p>
             </div>
 
@@ -69,7 +69,7 @@ export default function Login() {
                                     placeholder="••••••••"
                                 />
                             </div>
-                            {errors.password && <p className="mt-1 text-xs text-rose-600">{errors.password}</p>}
+                            {errors.password && <p className="mt-1 text-xs text-rose-700">{errors.password}</p>}
                         </div>
 
                         <div className="flex items-center justify-between">
@@ -119,6 +119,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

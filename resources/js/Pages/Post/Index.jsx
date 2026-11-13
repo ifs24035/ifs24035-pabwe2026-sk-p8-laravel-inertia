@@ -191,8 +191,8 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
     ];
     const toneClasses = {
         indigo: { box: 'bg-indigo-50 text-indigo-600 border-indigo-100', num: 'text-slate-900', unit: 'text-slate-500' },
-        emerald: { box: 'bg-emerald-50 text-emerald-600 border-emerald-100', num: 'text-emerald-600', unit: 'text-emerald-600' },
-        amber: { box: 'bg-amber-50 text-amber-600 border-amber-100', num: 'text-amber-600', unit: 'text-amber-600' },
+        emerald: { box: 'bg-emerald-50 text-emerald-700 border-emerald-100', num: 'text-emerald-700', unit: 'text-emerald-700' },
+        amber: { box: 'bg-amber-50 text-amber-700 border-amber-100', num: 'text-amber-700', unit: 'text-amber-700' },
     };
 
     return (
@@ -233,7 +233,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                         href="/dashboard/posts/export"
                         className="inline-flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-xl transition"
                     >
-                        <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         <span>Export Excel</span>
@@ -275,7 +275,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                     <div className="flex-1 relative">
                         <input
                             type="text"
-                            placeholder="Cari judul atau isi artikel..."
+                            aria-label="Cari artikel" placeholder="Cari judul atau isi artikel..."
                             value={search}
                             onChange={(e) => {
                                 setSearch(e.target.value);
@@ -283,7 +283,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             }}
                             className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         />
-                        <svg className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-slate-600 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
@@ -293,7 +293,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             setCategoryFilter(e.target.value);
                             applyFilters({ category: e.target.value });
                         }}
-                        className="lg:w-52 py-2 px-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
+                        aria-label="Filter kategori" className="lg:w-52 py-2 px-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                     >
                         <option value="">Semua Kategori</option>
                         {categories.map((cat) => (
@@ -306,7 +306,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             setStatusFilter(e.target.value);
                             applyFilters({ status: e.target.value });
                         }}
-                        className="lg:w-44 py-2 px-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
+                        aria-label="Filter status" className="lg:w-44 py-2 px-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                     >
                         <option value="">Semua Status</option>
                         <option value="published">Dipublikasikan</option>
@@ -428,7 +428,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                                         setActiveMenuId(null);
                                                         setDeletingPost(post);
                                                     }}
-                                                    className="w-full px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 flex items-center space-x-2 transition text-left"
+                                                    className="w-full px-3 py-2 text-xs font-semibold text-rose-700 hover:bg-rose-50 flex items-center space-x-2 transition text-left"
                                                 >
                                                     <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -450,14 +450,14 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
             {/* Create / Edit Modal (Full Screen) */}
             {showFormModal && (
                 <div className="fixed inset-0 z-50 flex flex-col bg-white">
-                    <div className={`px-6 md:px-8 py-4 text-white flex items-center justify-between shrink-0 shadow-xs ${editingPost ? 'bg-indigo-700' : 'bg-blue-600'}`}>
+                    <div className={`px-6 md:px-8 py-4 text-white flex items-center justify-between shrink-0 shadow-xs ${editingPost ? 'bg-indigo-700' : 'bg-blue-700'}`}>
                         <div className="flex items-center space-x-3">
                             <span className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-black text-sm">
                                 {editingPost ? '✎' : '+'}
                             </span>
                             <div>
                                 <h3 className="text-base font-bold leading-tight">{editingPost ? 'Ubah Artikel' : 'Tulis Artikel Baru'}</h3>
-                                <p className="text-xs text-white/80">Lengkapi judul, kategori, ringkasan, dan isi artikel dalam format Markdown</p>
+                                <p className="text-xs text-white">Lengkapi judul, kategori, ringkasan, dan isi artikel dalam format Markdown</p>
                             </div>
                         </div>
                         <button
@@ -472,8 +472,8 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                     <form onSubmit={submitForm} className="flex-1 flex flex-col justify-between overflow-hidden">
                         <div className="flex-1 p-6 md:p-8 space-y-5 overflow-y-auto w-full">
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
-                                <input
+                                <label htmlFor="post-form-1" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
+                                <input id="post-form-1"
                                     type="text"
                                     value={form.data.title}
                                     onChange={(e) => form.setData('title', e.target.value)}
@@ -481,13 +481,13 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                     className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     placeholder="Contoh: Memulai Perjalanan dengan Laravel 13"
                                 />
-                                {form.errors.title && <p className="mt-1 text-xs text-rose-600">{form.errors.title}</p>}
+                                {form.errors.title && <p className="mt-1 text-xs text-rose-700">{form.errors.title}</p>}
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
-                                    <select
+                                    <label htmlFor="post-form-2" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
+                                    <select id="post-form-2"
                                         value={form.data.category}
                                         onChange={(e) => form.setData('category', e.target.value)}
                                         className="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
@@ -496,7 +496,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                             <option key={cat.value} value={cat.value}>{cat.label}</option>
                                         ))}
                                     </select>
-                                    {form.errors.category && <p className="mt-1 text-xs text-rose-600">{form.errors.category}</p>}
+                                    {form.errors.category && <p className="mt-1 text-xs text-rose-700">{form.errors.category}</p>}
                                 </div>
                                 <div className="flex items-end">
                                     <label className="flex items-center space-x-2.5 px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 w-full cursor-pointer">
@@ -512,24 +512,24 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                                <label htmlFor="post-form-3" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                                     Ringkasan (1-2 kalimat pemikat pembaca)
                                 </label>
-                                <textarea
+                                <textarea id="post-form-3"
                                     rows={2}
                                     value={form.data.excerpt}
                                     onChange={(e) => form.setData('excerpt', e.target.value)}
                                     className="mt-1 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                                     placeholder="Kosongkan untuk membuat ringkasan otomatis dari isi artikel"
                                 />
-                                {form.errors.excerpt && <p className="mt-1 text-xs text-rose-600">{form.errors.excerpt}</p>}
+                                {form.errors.excerpt && <p className="mt-1 text-xs text-rose-700">{form.errors.excerpt}</p>}
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                                     Isi Artikel * (Toast UI Markdown Editor)
                                 </label>
-                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat editor...</div>}>
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-600">Memuat editor...</div>}>
                                     <MarkdownEditor
                                         key={editingPost ? `edit-${editingPost.id}` : 'create-post'}
                                         value={form.data.content}
@@ -538,7 +538,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                         placeholder="Tuliskan artikel Anda dalam format Markdown..."
                                     />
                                 </Suspense>
-                                {form.errors.content && <p className="mt-1 text-xs text-rose-600">{form.errors.content}</p>}
+                                {form.errors.content && <p className="mt-1 text-xs text-rose-700">{form.errors.content}</p>}
                             </div>
                         </div>
 
@@ -605,17 +605,17 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                         <form onSubmit={submitImport}>
                             <div className="p-6 space-y-4">
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Pilih File Excel (.xlsx, .xls, .csv)</label>
-                                    <input
+                                    <label htmlFor="post-form-4" className="block text-xs font-semibold text-slate-700 mb-1">Pilih File Excel (.xlsx, .xls, .csv)</label>
+                                    <input id="post-form-4"
                                         type="file"
                                         accept=".xlsx,.xls,.csv"
                                         onChange={(e) => importForm.setData('importFile', e.target.files[0])}
                                         required
                                         className="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
                                     />
-                                    {importForm.errors.importFile && <p className="mt-1 text-xs text-rose-600">{importForm.errors.importFile}</p>}
+                                    {importForm.errors.importFile && <p className="mt-1 text-xs text-rose-700">{importForm.errors.importFile}</p>}
                                 </div>
-                                <p className="text-[11px] text-slate-400">
+                                <p className="text-[11px] text-slate-600">
                                     Kolom yang dibaca: A No, B Title, C Category, D Excerpt, E Content (Markdown), F Status (Published / Draft).
                                     Gunakan hasil Export Excel sebagai templat.
                                 </p>
@@ -652,8 +652,8 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
 
                         <div className="p-6 space-y-3">
                             <div>
-                                <label className="block text-xs font-semibold text-slate-700 mb-1">Topik / Instruksi Artikel</label>
-                                <textarea
+                                <label htmlFor="post-form-5" className="block text-xs font-semibold text-slate-700 mb-1">Topik / Instruksi Artikel</label>
+                                <textarea id="post-form-5"
                                     rows={3}
                                     value={aiPrompt}
                                     onChange={(e) => setAiPrompt(e.target.value)}
@@ -673,7 +673,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                         onChange={(e) => setAiCount(e.target.value === '' ? '' : clampCount(e.target.value))}
                                         onBlur={() => setAiCount(clampCount(aiCount))}
                                         className="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs text-center font-semibold focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                                        placeholder="1"
+                                        aria-label="Jumlah artikel" placeholder="1"
                                     />
                                 </div>
                                 <span className="text-xs text-slate-500">(1 - 10)</span>
@@ -732,7 +732,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                     type="button"
                                     onClick={saveAiGenerated}
                                     disabled={isSavingAi || aiSelected.length === 0}
-                                    className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl shadow-xs flex items-center space-x-1.5 disabled:opacity-50"
+                                    className="px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow-xs flex items-center space-x-1.5 disabled:opacity-50"
                                 >
                                     {isSavingAi && <Spinner className="w-3.5 h-3.5 text-white" />}
                                     <span>{isSavingAi ? 'Menyimpan...' : `Simpan Artikel Terpilih (${aiSelected.length})`}</span>
