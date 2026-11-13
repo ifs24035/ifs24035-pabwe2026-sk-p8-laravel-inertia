@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import AppLayout from '../../Layouts/AppLayout';
-import MarkdownEditor from '../../Components/MarkdownEditor';
 import Pagination from '../../Components/Pagination';
 import CategoryBadge from '../../Components/CategoryBadge';
 import Spinner from '../../Components/Spinner';
+
+// Editor Toast UI berat: hanya dimuat saat modal tulis/ubah dibuka.
+const MarkdownEditor = lazy(() => import('../../Components/MarkdownEditor'));
 
 const emptyForm = { title: '', category: 'Umum', excerpt: '', content: '', is_published: false };
 
@@ -527,13 +529,15 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                                     Isi Artikel * (Toast UI Markdown Editor)
                                 </label>
-                                <MarkdownEditor
-                                    key={editingPost ? `edit-${editingPost.id}` : 'create-post'}
-                                    value={form.data.content}
-                                    onChange={(val) => form.setData('content', val)}
-                                    height="480px"
-                                    placeholder="Tuliskan artikel Anda dalam format Markdown..."
-                                />
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat editor...</div>}>
+                                    <MarkdownEditor
+                                        key={editingPost ? `edit-${editingPost.id}` : 'create-post'}
+                                        value={form.data.content}
+                                        onChange={(val) => form.setData('content', val)}
+                                        height="480px"
+                                        placeholder="Tuliskan artikel Anda dalam format Markdown..."
+                                    />
+                                </Suspense>
                                 {form.errors.content && <p className="mt-1 text-xs text-rose-600">{form.errors.content}</p>}
                             </div>
                         </div>

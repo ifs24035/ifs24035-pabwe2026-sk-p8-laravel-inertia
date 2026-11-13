@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Head, Link, router, useForm } from '@inertiajs/react';
 import AppLayout from '../../Layouts/AppLayout';
-import MarkdownEditor from '../../Components/MarkdownEditor';
-import MarkdownViewer from '../../Components/MarkdownViewer';
 import CategoryBadge from '../../Components/CategoryBadge';
 import Spinner from '../../Components/Spinner';
+
+const MarkdownEditor = lazy(() => import('../../Components/MarkdownEditor'));
+const MarkdownViewer = lazy(() => import('../../Components/MarkdownViewer'));
 
 export default function PostShow({ post, categories = [] }) {
     const [showEditModal, setShowEditModal] = useState(false);
@@ -187,7 +188,9 @@ export default function PostShow({ post, categories = [] }) {
                         <div className="pt-6 border-t border-slate-100">
                             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Isi Artikel (Markdown)</h2>
                             <div className="p-5 bg-white rounded-2xl border border-slate-200">
-                                <MarkdownViewer content={post.content} />
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat...</div>}>
+                                    <MarkdownViewer content={post.content} />
+                                </Suspense>
                             </div>
                         </div>
                     </div>
@@ -265,13 +268,15 @@ export default function PostShow({ post, categories = [] }) {
                                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                                     Isi Artikel * (Toast UI Markdown Editor)
                                 </label>
-                                <MarkdownEditor
-                                    key={`detail-edit-${post.id}`}
-                                    value={editForm.data.content}
-                                    onChange={(val) => editForm.setData('content', val)}
-                                    height="480px"
-                                    placeholder="Tuliskan artikel Anda dalam format Markdown..."
-                                />
+                                <Suspense fallback={<div className="h-40 flex items-center justify-center text-sm text-slate-400">Memuat editor...</div>}>
+                                    <MarkdownEditor
+                                        key={`detail-edit-${post.id}`}
+                                        value={editForm.data.content}
+                                        onChange={(val) => editForm.setData('content', val)}
+                                        height="480px"
+                                        placeholder="Tuliskan artikel Anda dalam format Markdown..."
+                                    />
+                                </Suspense>
                                 {editForm.errors.content && <p className="mt-1 text-xs text-rose-600">{editForm.errors.content}</p>}
                             </div>
                         </div>

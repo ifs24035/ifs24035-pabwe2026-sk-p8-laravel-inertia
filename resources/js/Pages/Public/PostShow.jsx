@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
 import PublicLayout from '../../Layouts/PublicLayout';
-import MarkdownViewer from '../../Components/MarkdownViewer';
 import CategoryBadge from '../../Components/CategoryBadge';
 import Avatar from '../../Components/Avatar';
+
+const MarkdownViewer = lazy(() => import('../../Components/MarkdownViewer'));
 
 export default function PublicPostShow({ post, related = [], categories = [] }) {
     const { auth } = usePage().props;
@@ -47,7 +48,9 @@ export default function PublicPostShow({ post, related = [], categories = [] }) 
                     </div>
 
                     <div className="mt-8">
-                        <MarkdownViewer content={post.content} />
+                        <Suspense fallback={<p className="text-sm text-slate-400 min-h-40">Memuat artikel...</p>}>
+                            <MarkdownViewer content={post.content} />
+                        </Suspense>
                     </div>
 
                     {/* Community CTA Card */}
